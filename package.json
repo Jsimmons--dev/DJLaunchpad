@@ -1,0 +1,22 @@
+{
+  "name": "djlaunchpad",
+  "version": "0.0.1",
+  "description": "This is a project for #100DaysOfCode based on a Novation Launchpad",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jsimmons--dev/DJLaunchpad.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jsimmons--dev/DJLaunchpad/issues"
+  },
+  "homepage": "https://github.com/Jsimmons--dev/DJLaunchpad#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
