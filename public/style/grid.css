@@ -1,0 +1,26 @@
+.blue{
+    background:blue;
+}
+.grid-button{
+    width:30vw;
+    height:30vw;
+    background:red;
+    display:inline-block;
+    border-radius:10px;
+}
+
+@media only screen and (min-width: 601px){
+    .grid-button{
+        width:20vw;
+        height:20vw;
+        background:orange;
+    }
+}
+
+@media only screen and (min-width: 993px){
+    .grid-button{
+        width:10vw;
+        height:10vw;
+        background:green;
+    }
+}
