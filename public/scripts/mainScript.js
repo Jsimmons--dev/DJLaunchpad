@@ -4,12 +4,13 @@ var gridButtons = document.querySelectorAll(".grid-button");
 
 //this is an array of elements so you can loop over them.
 gridButtons.forEach(function(gridButton){
-    gridButton.addEventListener('touchstart',function(event){
-        console.log('touchstart!');
-        gridButton.classList.add('blue');
+	console.log(gridButton);
+    gridButton.addEventListener('mousedown',function(event){
+        console.log('onmousedown!');
+        gridButton.classList.add('bg-blue');
     });
-    gridButton.addEventListener('touchend',function(event){
-        console.log('touchend!');
-        gridButton.classList.remove('blue');
+    gridButton.addEventListener('mouseup',function(event){
+        console.log('onmouseup!');
+        gridButton.classList.remove('bg-blue');
     });
 });
