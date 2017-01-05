@@ -1,9 +1,6 @@
-.blue{
-    background:blue;
-}
 .grid-button{
-    width:30vw;
-    height:30vw;
+    width:29%;
+    padding-top:29%;
     background:red;
     display:inline-block;
     border-radius:10px;
@@ -11,16 +8,16 @@
 
 @media only screen and (min-width: 601px){
     .grid-button{
-        width:20vw;
-        height:20vw;
+        width:19%;
+        padding-top: 19%;
         background:orange;
     }
 }
 
 @media only screen and (min-width: 993px){
     .grid-button{
-        width:10vw;
-        height:10vw;
+        width:9%;
+        padding-top: 9%;
         background:green;
     }
 }
