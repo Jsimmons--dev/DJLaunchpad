@@ -14,44 +14,19 @@
     <span> cool app</span>
 </div>
 
-<div>
-	<audio id="multiaudio1" src="audio/here we go.wav" preload="auto"></audio>
-	<audio id="multiaudio2" src="audio/okie_dokie.wav" preload="auto"></audio>
-	<audio id="multiaudio3" src="audio/dum.wav" preload="auto"></audio>
-	<audio id="multiaudio4" src="audio/tss.wav" preload="auto"></audio>
-	<audio id="multiaudio5" src="audio/yip.wav" preload="auto"></audio>
-	<audio id="multiaudio6" src="audio/surprise.wav" preload="auto"></audio>
-
-
-
-	<a href="javascript:play_multi_sound('multiaudio1');">here we go</a><br />
-	<a href="javascript:play_multi_sound('multiaudio2');">okie_dokie</a><br />
-	<a href="javascript:play_multi_sound('multiaudio3');">dum</a><br />
-	<a href="javascript:play_multi_sound('multiaudio4');">tss</a><br />
-	<a href="javascript:play_multi_sound('multiaudio5');">yip</a><br />
-
-	<script type="text/javascript">
-		var channel_max = 10;										// number of channels
-		audiochannels = new Array();
-		for (a=0;a<channel_max;a++) {									// prepare the channels
-			audiochannels[a] = new Array();
-			audiochannels[a]['channel'] = new Audio();						// create a new audio object
-			audiochannels[a]['finished'] = -1;							// expected end time for this channel
-		}
-		function play_multi_sound(s) {
-			for (a=0;a<audiochannels.length;a++) {
-				thistime = new Date();
-				if (audiochannels[a]['finished'] < thistime.getTime()) {			// is this channel finished?
-					audiochannels[a]['finished'] = thistime.getTime() + document.getElementById(s).duration*1000;
-					audiochannels[a]['channel'].src = document.getElementById(s).src;
-					audiochannels[a]['channel'].load();
-					audiochannels[a]['channel'].play();
-					break;
-				}
-			}
-		}
-	</script>
+<div id= "top-buttons">
+  <div class="top-button violet"></div>
+  <div class="top-button violet"></div>
+  <div class="top-button violet"></div>
+  <div class="top-button violet"></div>
+  <div class="top-button violet"></div>
+  <div class="top-button violet"></div>
+  <div class="top-button violet"></div>
+  <div class="top-button violet"></div>
+  <div class="top-button violet"></div>
+  <div class="top-button violet"></div>
 </div>
+
 <div id="dj-pad">
   <div class="grid-button class2"></div>
   <div class="grid-button"></div>
@@ -64,6 +39,20 @@
   <div class="grid-button"></div>
   <div class="grid-button"></div
 </div>
+
+<div id= "bottom-buttons">
+  <div class="bottom-button violet"></div>
+  <div class="bottom-button violet"></div>
+  <div class="bottom-button violet"></div>
+  <div class="bottom-button violet"></div>
+  <div class="bottom-button violet"></div>
+  <div class="bottom-button violet"></div>
+  <div class="bottom-button violet"></div>
+  <div class="bottom-button violet"></div>
+  <div class="bottom-button violet"></div>
+  <div class="bottom-button violet"></div>
+</div>
+
 
 <script type="text/javascript" src="scripts/mainScript.js"></script>
 </body>

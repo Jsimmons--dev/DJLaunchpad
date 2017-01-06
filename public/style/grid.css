@@ -21,3 +21,53 @@
         background:green;
     }
 }
+
+.violet{
+  background: violet;
+}
+
+.top-button{
+  width:9%;
+  padding-top:9%;
+  display:inline-block;
+  border-radius: 50%;
+}
+#top-buttons{
+    margin:0 auto;
+    width:300px;
+}
+@media only screen and (min-width: 601px){
+    #top-buttons{
+        width:500px;
+    }
+}
+
+@media only screen and (min-width: 993px){
+    #top-buttons{
+        width:800px;
+
+    }
+}
+
+.bottom-button{
+  width:9%;
+  padding-top:9%;
+  display:inline-block;
+  border-radius: 50%;
+}
+#bottom-buttons{
+    margin:0 auto;
+    width:300px;
+}
+@media only screen and (min-width: 601px){
+    #bottom-buttons{
+        width:500px;
+    }
+}
+
+@media only screen and (min-width: 993px){
+    #bottom-buttons{
+        width:800px;
+
+    }
+}
