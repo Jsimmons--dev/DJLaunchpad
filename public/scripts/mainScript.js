@@ -1,3 +1,11 @@
+//global configuration variables
+var currentSoundBank = 0;
+
+function deactivateSoundbankButton(soundBankIndex){
+    var bank = document.querySelector("#bank-button-"+soundBankIndex);
+    bank.classList.remove("activated");
+}
+
 //selecting all the grid buttons out of the page. Any selector that starts with a period is searching the "class"
 //attribute of the element.
 var gridButtons = document.querySelectorAll(".grid-button");
@@ -15,22 +23,24 @@ audioChannels.set("7", new Audio("audio/Alesis-S4-Plus-5ths-Lead-C5.wav"));
 audioChannels.set("8", new Audio("audio/Alesis-S4-Plus-Brassy-5th-C4.wav"));
 audioChannels.set("9", new Audio("audio/Casio-VZ-10M-Astral-C2.wav"));
 
-//this is an array of elements so you can loop over them.
-gridButtons.forEach(function(gridButton, i){
-	gridButton.id = i;
-	console.log(gridButton);
-    gridButton.addEventListener('mousedown',function(event){
-        console.log('onmousedown!' + gridButton);
-				var audio = audioChannels.get(gridButton.id);
-			  if (audio.paused) {
-			      audio.play();
-			  }else{
-			      audio.currentTime = 0
-			  }
-        gridButton.classList.add('bg-blue');
-    });
-    gridButton.addEventListener('mouseup',function(event){
-        console.log('onmouseup!');
-        gridButton.classList.remove('bg-blue');
-    });
+
+var gridPlatform = document.querySelector('#dj-pad');
+
+var numberOfPads = 10;
+
+for(var i = 0; i<numberOfPads;i++){
+    var launchButton = document.createElement('launch-button');
+    launchButton.setAttribute('id',new String(i));
+    gridPlatform.appendChild(launchButton);
+}
+
+var soundbankButtons = document.querySelectorAll(".top-button");
+
+soundbankButtons.forEach(function(bankButton,i){
+    bankButton.id = "bank-button-" + i;
+    bankButton.addEventListener('click',function(event){
+        deactivateSoundbankButton(currentSoundBank);
+        currentSoundBank = i;
+        bankButton.classList.add("activated");
+    })
 });
