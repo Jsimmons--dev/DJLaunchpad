@@ -26,13 +26,15 @@ audioChannels.set("9", new Audio("audio/Casio-VZ-10M-Astral-C2.wav"));
 
 var gridPlatform = document.querySelector('#dj-pad');
 
-var numberOfPads = 10;
+var numberOfPads = 64;
 
 for(var i = 0; i<numberOfPads;i++){
     var launchButton = document.createElement('launch-button');
     launchButton.setAttribute('id',new String(i));
     gridPlatform.appendChild(launchButton);
 }
+
+var numberOfBanks = 3;
 
 var soundbankButtons = document.querySelectorAll(".top-button");
 
