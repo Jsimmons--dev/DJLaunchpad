@@ -9,6 +9,7 @@
     var MyElementProto = Object.create(HTMLElement.prototype);
 
     MyElementProto.createdCallback = function () {
+
         var shadowRoot = this.createShadowRoot();
 
         clone = thatDoc.importNode(template, true);
@@ -23,7 +24,8 @@
         if(attr === 'id')
             this.addEventListener('mousedown',function(event){
                 console.log('onmousedown!' + this);
-                var audio = audioChannels.get(this.id);
+                console.log(this.boardConfig);
+                var audio = this.boardConfig.currentBank.getSound(this.pad);
                 if (audio.paused) {
                     audio.play();
                 }else{

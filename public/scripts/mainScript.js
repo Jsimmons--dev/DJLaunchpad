@@ -1,48 +1,54 @@
-//global configuration variables
-var currentSoundBank;
 
-function deactivateSoundbankButton(currentSoundBank){
-    if(currentSoundBank)currentSoundBank.classList.remove("activated");
-}
+
+//Create new baord config 
+
+var boardConfig = new BoardConfig(2,5);
+
+boardConfig.mapPadToSound(boardConfig.pads[0],new Audio("audio/Bass-Drum-1.wav"));
+boardConfig.mapPadToSound(boardConfig.pads[1],new Audio("audio/Closed-Hi-Hat-1.wav"));
+boardConfig.mapPadToSound(boardConfig.pads[2],new Audio("audio/Closed-Hi-Hat-2.wav"));
+boardConfig.mapPadToSound(boardConfig.pads[3],new Audio("audio/Crash-Cymbal-1.wav"));
+boardConfig.mapPadToSound(boardConfig.pads[4],new Audio("audio/E-Mu-Proteus-FX-Wacky-Snare.wav"));
+boardConfig.currentBank = boardConfig.banks[1];
+boardConfig.mapPadToSound(boardConfig.pads[0],new Audio("audio/Alesis-S4-Plus-Shark-Bass-C2.wav"));
+boardConfig.mapPadToSound(boardConfig.pads[1],new Audio("audio/Alesis-Fusion-Bass-C3.wav"));
+boardConfig.mapPadToSound(boardConfig.pads[2],new Audio("audio/Alesis-S4-Plus-5ths-Lead-C5.wav"));
+boardConfig.mapPadToSound(boardConfig.pads[3],new Audio("audio/Alesis-S4-Plus-Brassy-5th-C4.wav"));
+boardConfig.mapPadToSound(boardConfig.pads[4],new Audio("audio/Casio-VZ-10M-Astral-C2.wav"));
+boardConfig.currentBank = boardConfig.banks[0];
+
 
 //selecting all the grid buttons out of the page. Any selector that starts with a period is searching the "class"
 //attribute of the element.
 var gridButtons = document.querySelectorAll(".grid-button");
 
-//This is a map of audio channels. Each channel plays one sound
-audioChannels = new Map();
-audioChannels.set("0", new Audio("audio/Bass-Drum-1.wav"));
-audioChannels.set("1", new Audio("audio/Closed-Hi-Hat-1.wav"));
-audioChannels.set("2", new Audio("audio/Closed-Hi-Hat-2.wav"));
-audioChannels.set("3", new Audio("audio/Crash-Cymbal-1.wav"));
-audioChannels.set("4", new Audio("audio/E-Mu-Proteus-FX-Wacky-Snare.wav"));
-audioChannels.set("5", new Audio("audio/Alesis-S4-Plus-Shark-Bass-C2.wav"));
-audioChannels.set("6", new Audio("audio/Alesis-Fusion-Bass-C3.wav"));
-audioChannels.set("7", new Audio("audio/Alesis-S4-Plus-5ths-Lead-C5.wav"));
-audioChannels.set("8", new Audio("audio/Alesis-S4-Plus-Brassy-5th-C4.wav"));
-audioChannels.set("9", new Audio("audio/Casio-VZ-10M-Astral-C2.wav"));
-
-
 var gridPlatform = document.querySelector('#dj-pad');
 
-var numberOfPads = 9;
-
-for(var i = 0; i<numberOfPads;i++){
+for(var i = 0; i<boardConfig.numberOfPads;i++){
     var launchButton = document.createElement('launch-button');
     launchButton.setAttribute('id',new String(i));
+    launchButton.boardConfig = boardConfig;
+    launchButton.pad = boardConfig.pads[i];
     gridPlatform.appendChild(launchButton);
 }
 
-var numberOfBanks = 3;
 var banksContainer = document.querySelector("#top-buttons");
 
-for(var i=0; i<numberOfBanks;i++){
+//global configuration variables
+var currentBankButton; //RENAME
+
+function deactivateSoundbankButton(currentSoundBank){
+    if(currentSoundBank)currentSoundBank.classList.remove("activated");
+}
+
+for(let i=0; i<boardConfig.numberOfBanks;i++){
     var bank = document.createElement('div');
     bank.classList.add('top-button');
     bank.classList.add('violet');
     bank.addEventListener('click',function(event){
-        deactivateSoundbankButton(currentSoundBank);
-        currentSoundBank = this;
+        deactivateSoundbankButton(currentBankButton);
+        currentBankButton = this;
+        boardConfig.currentBank = boardConfig.banks[i];
         this.classList.add("activated");
     });
     banksContainer.appendChild(bank);
