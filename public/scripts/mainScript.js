@@ -44,3 +44,26 @@ soundbankButtons.forEach(function(bankButton,i){
         bankButton.classList.add("activated");
     })
 });
+
+var database = firebase.database();
+var storage = firebase.storage();
+var storageRef = storage.ref();
+var soundsRef = storageRef.child("sounds");
+console.log("storage", storage);
+console.log("database", database);
+
+function uploadSoundFiles(files){
+    console.log("uploading files", files);
+    for (var file of files){
+        var ref = soundsRef.child(file.name);
+        ref.put(file).then(function(snapshot){
+            console.log("uploaded file", file.name, file, snapshot);
+        });
+    }
+}
+
+function getAllSounds(callback){
+
+}
+
+
