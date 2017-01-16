@@ -55,15 +55,31 @@ console.log("database", database);
 function uploadSoundFiles(files){
     console.log("uploading files", files);
     for (var file of files){
+        //TODO verify sound file type
+        //push file to storage
         var ref = soundsRef.child(file.name);
         ref.put(file).then(function(snapshot){
             console.log("uploaded file", file.name, file, snapshot);
         });
+        //push name to db
+        //TODO check for duplicates
+        database.ref("sounds").push().set(file.name);
     }
 }
 
-function getAllSounds(callback){
-
+function getSoundName(sId, callback){
+    //get sound name from id
+    database.ref("sounds/" + sId).once('value').then(callback);
 }
+
+function createBlankBank(bId){
+    database.ref("banks/" + bId).set({"sounds": ""});
+}
+
+function addSoundToBank(bId, sId){
+    database.ref("banks/" + bId).set()
+}
+
+
 
 
