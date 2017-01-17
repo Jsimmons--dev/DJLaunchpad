@@ -1,0 +1,27 @@
+.grid-button{
+    width:29%;
+    padding-top:29%;
+    background:red;
+    display:inline-block;
+    border-radius:10px;
+}
+
+@media only screen and (min-width: 601px){
+    .grid-button{
+        width:19%;
+        padding-top: 19%;
+        background:orange;
+    }
+}
+
+@media only screen and (min-width: 993px){
+    .grid-button{
+        width:11%;
+        padding-top: 11%;
+        background:green;
+    }
+}
+
+.bg-blue {
+    background:blue;
+}

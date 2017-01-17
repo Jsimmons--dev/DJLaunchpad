@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style/grid.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="style/grid.css">
     <link rel="stylesheet" type="text/css" href="style/mainStyle.css">
   <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
@@ -19,48 +20,18 @@
   firebase.initializeApp(config);
 </script>
 
-    <link rel="import" href="./components/launch-button.html">
+    <link rel="import" href="components/launch-button/index.html">
 </head>
 <body>
 
-<h1>DJ Launchpad</h1>
-<div>
-    <p>try resizing the screen! The smaller the screen the fewer buttons per row.</p>
-    <p>example shmample paragraph with a <span class="text-green">green</span> word</p>
-    <span>this is a</span>
-    <span> cool app</span>
-</div>
-
-<div id= "top-buttons">
-  <div class="top-button violet"></div>
-  <div class="top-button violet"></div>
-  <div class="top-button violet"></div>
-  <div class="top-button violet"></div>
-  <div class="top-button violet"></div>
-  <div class="top-button violet"></div>
-  <div class="top-button violet"></div>
-  <div class="top-button violet"></div>
-  <div class="top-button violet"></div>
-  <div class="top-button violet"></div>
-</div>
+<div id= "top-buttons"></div>
 
 <div id="dj-pad"></div>
 
-<div id= "bottom-buttons">
-  <div class="bottom-button violet"></div>
-  <div class="bottom-button violet"></div>
-  <div class="bottom-button violet"></div>
-  <div class="bottom-button violet"></div>
-  <div class="bottom-button violet"></div>
-  <div class="bottom-button violet"></div>
-  <div class="bottom-button violet"></div>
-  <div class="bottom-button violet"></div>
-  <div class="bottom-button violet"></div>
-  <div class="bottom-button violet"></div>
-</div>
 
 <input type="file" id="input" multiple onchange="uploadSoundFiles(this.files)">
 
+<script type="text/javascript" src="services/AudioService.js"></script>
 <script type="text/javascript" src="scripts/mainScript.js"></script>
 </body>
 </html>
