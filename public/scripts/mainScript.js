@@ -80,8 +80,43 @@ function uploadSoundFiles(files){
 
 function getSoundName(sId, callback){
     //get sound name from id
-    database.ref("sounds/" + sId).once('value').then(callback);
+    var promise = database.ref("sounds/" + sId).once('value').then(function(snapshot){return snapshot.val();});
+    if (callback){
+        promise.then(callback);
+    }
+    return promise;
 }
+
+function getSoundDownloadURL(sId, callback){
+    var promise = getSoundName(sId).then(function(name){
+        return soundsRef.child(name).getDownloadURL();
+    });
+    if(callback){
+        promise.then(callback);
+    }
+    return promise;
+}
+function getSound(sId, callback){
+    var promise = getSoundDownloadURL(sId).then(function(url){
+        return new Promise(function(resolve, reject){
+            var xhr = new XMLHttpRequest();
+            xhr.responseType = 'blob';
+            xhr.onload = function(){
+                resolve(xhr.response);
+            }
+            xhr.open('GET', url);
+            xhr.send();
+        })
+    });
+    if (callback){
+        promise.then(callback);
+    }
+    return promise;
+}
+
+getSound("-KaZp8Gvmsr7KD-mV1Ni").then(function(response){
+    console.log("response", response);
+})
 
 function createBlankBank(bId){
     database.ref("banks/" + bId).set({"sounds": ""});
